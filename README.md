@@ -74,9 +74,6 @@ fig.savefig("serena-williams.png", dpi=150, bbox_inches="tight")
 
 ![Serena Williams' career matches: her age vs. how much older or younger she was than each opponent](images/serena-williams.png)
 
-Early in her career Serena was usually younger than her opponents. By her mid-30s she was
-often 10 to 20 years older than them, and she kept winning most of those matches.
-
 ## Functions
 
 ### `get_career(player_name)`
