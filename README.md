@@ -35,6 +35,48 @@ get_career("GastonSanchez")
 # ValueError: No player named 'GastonSanchez' found on tennisabstract.com. ...
 ```
 
+## Example: Serena Williams
+
+`get_career()` returns one row per match:
+
+```python
+from tenniscareer import get_career, plot_career
+
+serena = get_career("serena williams")
+serena.shape
+# (1038, 13)
+
+serena[["date", "tournament", "round", "result", "opponent",
+        "player_age", "opponent_age", "age_diff"]].head()
+```
+
+```
+        date       tournament round result                  opponent  player_age  opponent_age   age_diff
+0 1995-10-30    Canadian Open    Q1      L               Anne Miller   14.101370     18.789041  -4.687671
+1 1997-03-07     Indian Wells    Q1      L  Alexia Dechaume Balleret   15.454795     26.863014 -11.408219
+2 1997-08-04  Manhattan Beach    Q3      L               Magui Serna   15.865753     18.441096  -2.575342
+3 1997-08-04  Manhattan Beach    Q1      W             Amanda Basica   15.865753     19.136986  -3.271233
+4 1997-08-04  Manhattan Beach    Q2      W       Tamarine Tanasugarn   15.865753     20.210959  -4.345205
+```
+
+```python
+serena["result"].value_counts()
+# W    862
+# L    176
+```
+
+Plot her whole career:
+
+```python
+fig = plot_career(serena)
+fig.savefig("serena-williams.png", dpi=150, bbox_inches="tight")
+```
+
+![Serena Williams' career matches: her age vs. how much older or younger she was than each opponent](images/serena-williams.png)
+
+Early in her career Serena was usually younger than her opponents. By her mid-30s she was
+often 10 to 20 years older than them, and she kept winning most of those matches.
+
 ## Functions
 
 ### `get_career(player_name)`
@@ -83,6 +125,7 @@ tests/
     data/            # mock women's and men's career files
     test_data.py
     test_plot.py
+images/              # example plots shown in this README
 ```
 
 ## Notes
